@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html>
-<body>
-<head>
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-WOdSzz11/3cpqOdrm89LBL2UPwEU9EhbDtMy2OciEhs='">
+console.log("Chrome extension ");
 
+var obj, dbParam, xmlhttp, myObj, x, txt = "";
 
-</head>
-<h1>The XMLHttpRequest Object</h1>
-
-<button type="button" onclick="loadDoc()">Request data</button>
-
-<p id="demo"></p>
- 
-<script>
-    var obj, dbParam, xmlhttp, myObj, x, txt = "";
-function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -28,11 +15,6 @@ function loadDoc() {
     document.getElementById("demo").innerHTML = txt;
   }
 };
-  xhttp.open("POST", "http://piratebaymirror.com/", true);
+  xhttp.open("POST", "http://pbmirror.pinoyflutterdev.com", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("tag=get*mirrors");
-}
-</script>
-
-</body>
-</html>
