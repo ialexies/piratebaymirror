@@ -40,12 +40,19 @@
         $piratemirror =$list_array[$i]->find('a', 0)->plaintext;
         $country =$list_array[$i]->find('td[title=\'TPB Proxy Country\']', 0)->plaintext;
         $status =$list_array[$i]->find('td[title=\'TPB Proxy Status\']', 0)->plaintext;
-        // $country =$list_array[$i]->find('td[title=\'TPB Proxy Country\']', 0)->plaintext;
         $ssl =$list_array[$i]->find('td[title=\'TPB Proxy SSL Status\']', 0)->plaintext;
-        // $country =$list_array[$i]->find('td:nth-child(4)', 0)->plaintext;
 
-        array_push($arrpirate, $piratemirror, $country, $status, $ssl);
+        $arrpirate_fields = array();
+        $arrpirate_fields = array(trim($piratemirror), trim($country),  trim($status ), trim($ssl), );
+ 
+        array_push($arrpirate, (object) $arrpirate_fields);
     }
+
+
+    // print("<pre>".print_r( $arrpirate,true)."</pre>");
+
+    // echo $arrpirate[0][1];
+
 
     if( isset($_POST['tag']) && $_POST['tag']!='' ){
         $tag=$_POST['tag'];
@@ -53,8 +60,12 @@
     
         if($tag=="get*mirrors"){
             // print_r( $arrpirate);
-           return $json_data =  json_encode($arrpirate);
+        //    return $json_data =  json_encode($arrpirate);
             // echo $json_data;
+
+            $object = (object) $arrpirate;
+
+            echo json_encode($object);
         }
 
     }
